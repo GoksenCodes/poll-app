@@ -6,6 +6,7 @@ import {
   FormControl,
   FormArray
 } from '@angular/forms';
+import { OptionsService } from 'src/app/services/options.service';
 
 @Component({
   selector: 'app-create-poll',
@@ -15,8 +16,9 @@ import {
 export class CreatePollComponent implements OnInit {
   questionForm: FormGroup;
   optionForm: FormGroup;
+  listOfOptions: string[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private optionsService: OptionsService) {
     this.questionForm = this.createForm();
   }
 
@@ -40,11 +42,17 @@ export class CreatePollComponent implements OnInit {
     return this.optionForm;
   }
 
+  getOptionsValue(): string[] {
+    return this.questionForm.value.options.map(option => option.option);
+  }
+
   addOption(): void {
     this.options.push(this.newOption());
+    this.optionsService.respondentOptions = this.getOptionsValue();
   }
 
   removeOption(optionIndex: number) {
     this.options.removeAt(optionIndex);
+    this.optionsService.respondentOptions = this.getOptionsValue();
   }
 }
