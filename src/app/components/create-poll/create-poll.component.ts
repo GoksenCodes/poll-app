@@ -3,7 +3,8 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormControl
+  FormControl,
+  FormArray
 } from '@angular/forms';
 
 @Component({
@@ -13,20 +14,37 @@ import {
 })
 export class CreatePollComponent implements OnInit {
   questionForm: FormGroup;
+  optionForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.questionForm = this.createForm();
+  }
 
-  ngOnInit(): void {
-    this.questionForm = this.formBuilder.group({
-      question: [null, [Validators.required]],
-      options: [[null, [Validators.required]]]
+  ngOnInit(): void {}
+
+  createForm(): FormGroup {
+    return this.fb.group({
+      question: [null, [Validators.maxLength(80)]],
+      options: this.fb.array([this.newOption()])
     });
   }
 
-  // addInitalOptions(): FormGroup {
-  //   this.formBuilder.group({
-  //     option1: [null, [Validators.required]],
-  //     option2: [null, [Validators.required]]
-  //   });
-  // }
+  get options(): FormArray {
+    return this.questionForm.get('options') as FormArray;
+  }
+
+  newOption() {
+    this.optionForm = this.fb.group({
+      option: [null]
+    });
+    return this.optionForm;
+  }
+
+  addOption(): void {
+    this.options.push(this.newOption());
+  }
+
+  removeOption(optionIndex: number) {
+    this.options.removeAt(optionIndex);
+  }
 }

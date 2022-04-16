@@ -1,1 +1,43 @@
-<p>create-poll works!</p>
+<div class="main-container">
+  <div class="form-container">
+    <form [formGroup]="questionForm">
+      <div class="first-level-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Question
+          </mat-label>
+          <input matInput formControlName="question" required>
+          <mat-error *ngIf="questionForm.controls.question.touched && questionForm.controls.question.invalid">
+            <span *ngIf="questionForm.controls.question.errors.required">This field is mandatory.</span>
+            <span *ngIf="questionForm.controls.question.errors.pattern">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addOption()">
+          Add Answers
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </div>
+      <div class="options-form" [formGroup]="questionForm">
+        <ng-container formArrayName="options">
+          <ng-container *ngFor="let option of options?.controls ; let i=index">
+            <div [formGroupName]="i">
+              <div class="option-row" [formGroup]="questionForm">
+                <mat-form-field appearance=fill>
+                  <mat-label>
+                    Option
+                  </mat-label>
+                  <input matInput formControlName="option" required>
+                  <mat-error *ngIf="questionForm.controls.question.touched && questionForm.controls.question.invalid">
+                    <span *ngIf="questionForm.controls.question.errors.required">Answers can not be empty.</span>
+                    <span *ngIf="questionForm.controls.question.errors.pattern">This field is invalid.</span>
+                  </mat-error>
+                </mat-form-field>
+                <mat-icon class="delete-btn" (click)="removeOption(i)">delete_forever</mat-icon>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+  <div>{{this.options.length}}/10 possible answers</div>
+</div>

@@ -1,0 +1,15 @@
+form {
+  max-width: 600px;
+
+  .first-level-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .options-container {
+    .option {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
