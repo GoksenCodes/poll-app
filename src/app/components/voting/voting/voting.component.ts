@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OptionsService } from 'src/app/services/options.service';
+import { OptionsService } from 'src/app/services/manage-options/options.service';
 import { MatRadioChange } from '@angular/material/radio';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ManageVotingService } from 'src/app/services/manage-voting/manage-voting.service';
 
 export interface IOptionObject {
   value: string;
@@ -18,7 +19,11 @@ export class VotingComponent implements OnInit {
   optionForm: FormGroup;
   votes: IOptionObject[] = [];
 
-  constructor(private fb: FormBuilder, private optionsService: OptionsService) {
+  constructor(
+    private fb: FormBuilder,
+    private optionsService: OptionsService,
+    private votingService: ManageVotingService
+  ) {
     this.optionForm = this.createOptionForm();
     this.optionsService.respondentOptions.subscribe(options => {
       this.votingOptions = options;
@@ -43,17 +48,12 @@ export class VotingComponent implements OnInit {
 
   submit() {
     const votedOption = this.optionForm.value.option;
-    this.updateVotingCount(votedOption);
-    // this.votingService.updateVotingCount(votedOption);
+    this.updateVotes(votedOption);
 
     this.optionForm.reset();
   }
 
-  updateVotingCount(votedOption: string) {
-    this.votes.map(vote => {
-      if ((vote.value = votedOption)) {
-        vote.count++;
-      }
-    });
+  updateVotes(votedOption: string) {
+    this.votingService.updateVotingCount(votedOption);
   }
 }
