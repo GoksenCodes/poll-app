@@ -20,7 +20,7 @@
         <ng-container formArrayName="options">
           <ng-container *ngFor="let option of options?.controls ; let i=index">
             <div [formGroupName]="i">
-              <div class="option-row" [formGroup]="questionForm">
+              <div class="option-row">
                 <mat-form-field appearance=fill>
                   <mat-label>
                     Option

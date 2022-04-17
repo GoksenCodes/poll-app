@@ -27,7 +27,7 @@ export class CreatePollComponent implements OnInit {
   createForm(): FormGroup {
     return this.fb.group({
       question: [null, [Validators.maxLength(80)]],
-      options: this.fb.array([this.newOption()])
+      options: this.fb.array([this.addEmptyOption(), this.addEmptyOption()])
     });
   }
 
@@ -35,27 +35,29 @@ export class CreatePollComponent implements OnInit {
     return this.questionForm.get('options') as FormArray;
   }
 
-  newOption() {
-    this.optionForm = this.fb.group({
+  addEmptyOption() {
+    return this.fb.group({
       option: [null]
     });
-    return this.optionForm;
   }
 
   getOptionsValue(): string[] {
-    return this.questionForm.value.options.map(option => option.option);
+    return this.questionForm.value.options.map(option => {
+      console.log(option);
+      if (option.option !== null) {
+        return option.option;
+      }
+    });
   }
 
   addOption(): void {
-    this.options.push(this.newOption());
-
-    //TODO: REVERT
-    this.optionsService.respondentOptions.next(['o1', 'o2']);
-    // this.optionsService.respondentOptions = this.getOptionsValue();
+    this.optionsService.respondentOptions.next(this.getOptionsValue());
+    this.options.push(this.addEmptyOption());
   }
 
   removeOption(optionIndex: number) {
     this.options.removeAt(optionIndex);
+    console.log(this.options);
     this.optionsService.respondentOptions.next(this.getOptionsValue());
   }
 }
