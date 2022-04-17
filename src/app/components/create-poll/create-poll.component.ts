@@ -15,7 +15,6 @@ import { OptionsService } from 'src/app/services/options.service';
 })
 export class CreatePollComponent implements OnInit {
   questionForm: FormGroup;
-  optionForm: FormGroup;
   listOfOptions: string[];
   isOptionAdded = false;
 

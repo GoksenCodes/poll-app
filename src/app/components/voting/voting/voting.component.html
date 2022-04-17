@@ -1,7 +1,8 @@
-<div class="main-container">
-  <mat-radio-group aria-label="Select an option">
-    <ng-container *ngFor="let option of votingOptions">
-      <mat-radio-button value="{{option}}" (change)="radioChanged($event)">{{option}}</mat-radio-button>
-    </ng-container>
+<form [formGroup]="optionForm" (ngSubmit)="submit()">
+  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="option">
+    <mat-radio-button class="example-radio-button" *ngFor="let option of votingOptions" [value]="option">
+      {{option}}
+    </mat-radio-button>
   </mat-radio-group>
-</div>
+  <button *ngIf="votingOptions.length" mat-raised-button color="accent">Submit</button>
+</form>

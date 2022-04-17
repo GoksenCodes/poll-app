@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { OptionsService } from 'src/app/services/options.service';
 import { MatRadioChange } from '@angular/material/radio';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+export interface IOptionObject {
+  value: string;
+  count: number;
+}
 
 @Component({
   selector: 'app-voting',
@@ -9,27 +15,45 @@ import { MatRadioChange } from '@angular/material/radio';
 })
 export class VotingComponent implements OnInit {
   votingOptions: string[];
+  optionForm: FormGroup;
+  votes: IOptionObject[] = [];
 
-  constructor(private optionsService: OptionsService) {
-    this.optionsService.respondentOptions.subscribe(
-      options => (this.votingOptions = options)
-    );
+  constructor(private fb: FormBuilder, private optionsService: OptionsService) {
+    this.optionForm = this.createOptionForm();
+    this.optionsService.respondentOptions.subscribe(options => {
+      this.votingOptions = options;
+      this.votingOptions.map(option => {
+        let optionObject = {
+          value: option,
+          count: 0
+        };
+        console.log(optionObject);
+        return this.votes.push(optionObject);
+      });
+    });
   }
 
-  ngOnInit(): void {
-    console.log(this.votingOptions);
+  ngOnInit(): void {}
 
-    //create form with radio buttons
-    //onVote get the value, loop through array of objects find matching value, increment it's count.
+  createOptionForm(): FormGroup {
+    return this.fb.group({
+      option: [null]
+    });
   }
 
-  radioChanged($event: MatRadioChange) {
-    console.log($event);
+  submit() {
+    const votedOption = this.optionForm.value.option;
+    this.updateVotingCount(votedOption);
+    // this.votingService.updateVotingCount(votedOption);
 
-    const checkedOptions = [];
+    this.optionForm.reset();
+  }
 
-    //create interface for array of objects +> value, counts
-    //each change  //if .checked  go trhorugh the array,
-    //find the matching value, +1 counts value
+  updateVotingCount(votedOption: string) {
+    this.votes.map(vote => {
+      if ((vote.value = votedOption)) {
+        vote.count++;
+      }
+    });
   }
 }
