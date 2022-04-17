@@ -26,12 +26,16 @@
                     <span *ngIf="options.controls[i].errors?.maxlength">Answer can be max 80 characters</span>
                   </mat-error>
                 </mat-form-field>
-                <ng-container *ngIf="i > 0">
-                  <button mat-icon-button *ngIf="!isOptionAdded else removeButton" (click)="addOption()"
-                    [disabled]="options.controls[i].invalid">
+                <ng-container *ngIf="i === options?.controls.length - 1 else removeButton">
+                  <button mat-icon-button (click)="addOption()" [disabled]="options.controls[i].invalid">
                     <mat-icon>add_circle</mat-icon>
                   </button>
                 </ng-container>
+                <ng-template #removeButton>
+                  <button mat-icon-button [disabled]="!(getOptionsValue().length > 2)" (click)="removeOption(i)">
+                    <mat-icon class="delete-btn">remove_circle</mat-icon>
+                  </button>
+                </ng-template>
               </div>
             </div>
           </ng-container>
@@ -41,9 +45,3 @@
   </div>
   <div>{{getOptionsValue().length}}/10 possible answers</div>
 </div>
-
-<ng-template #removeButton>
-  <button mat-icon-button [disabled]="!(getOptionsValue().length > 2)" (click)="removeOption(i)">
-    <mat-icon class="delete-btn">remove_circle</mat-icon>
-  </button>
-</ng-template>

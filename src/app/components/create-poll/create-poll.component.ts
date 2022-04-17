@@ -3,10 +3,11 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormControl,
-  FormArray
+  FormArray,
+  Form
 } from '@angular/forms';
 import { OptionsService } from 'src/app/services/manage-options/options.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-create-poll',
@@ -16,18 +17,17 @@ import { OptionsService } from 'src/app/services/manage-options/options.service'
 export class CreatePollComponent implements OnInit {
   questionForm: FormGroup;
   listOfOptions: string[];
-  isOptionAdded = false;
 
-  constructor(private fb: FormBuilder, private optionsService: OptionsService) {
+  constructor(private fb: FormBuilder, private dataService: DataService) {
     this.questionForm = this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   createForm(): FormGroup {
     return this.fb.group({
       question: [null, [Validators.maxLength(80)]],
-      options: this.fb.array([this.addEmptyOption(), this.addEmptyOption()])
+      options: this.fb.array([this.addEmptyOption()], Validators.maxLength(10))
     });
   }
 
@@ -48,14 +48,12 @@ export class CreatePollComponent implements OnInit {
   }
 
   addOption(): void {
-    this.optionsService.respondentOptions.next(this.getOptionsValue());
+    this.dataService.updateOptionsData(this.getOptionsValue());
     this.options.push(this.addEmptyOption());
-    this.isOptionAdded = true;
   }
 
   removeOption(optionIndex: number) {
     this.options.removeAt(optionIndex);
-    console.log(this.options);
-    this.optionsService.respondentOptions.next(this.getOptionsValue());
+    this.dataService.updateOptionsData(this.getOptionsValue());
   }
 }
