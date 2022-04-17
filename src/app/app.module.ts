@@ -9,10 +9,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VotingComponent } from './components/voting/voting/voting.component';
 
 @NgModule({
-  declarations: [AppComponent, CreatePollComponent],
+  declarations: [AppComponent, CreatePollComponent, VotingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

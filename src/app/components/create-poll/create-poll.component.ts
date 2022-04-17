@@ -48,11 +48,14 @@ export class CreatePollComponent implements OnInit {
 
   addOption(): void {
     this.options.push(this.newOption());
-    this.optionsService.respondentOptions = this.getOptionsValue();
+
+    //TODO: REVERT
+    this.optionsService.respondentOptions.next(['o1', 'o2']);
+    // this.optionsService.respondentOptions = this.getOptionsValue();
   }
 
   removeOption(optionIndex: number) {
     this.options.removeAt(optionIndex);
-    this.optionsService.respondentOptions = this.getOptionsValue();
+    this.optionsService.respondentOptions.next(this.getOptionsValue());
   }
 }
