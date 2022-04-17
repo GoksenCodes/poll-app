@@ -17,6 +17,7 @@ export class CreatePollComponent implements OnInit {
   questionForm: FormGroup;
   optionForm: FormGroup;
   listOfOptions: string[];
+  isOptionAdded = false;
 
   constructor(private fb: FormBuilder, private optionsService: OptionsService) {
     this.questionForm = this.createForm();
@@ -42,17 +43,15 @@ export class CreatePollComponent implements OnInit {
   }
 
   getOptionsValue(): string[] {
-    return this.questionForm.value.options.map(option => {
-      console.log(option);
-      if (option.option !== null) {
-        return option.option;
-      }
-    });
+    return this.questionForm.value.options
+      .filter(option => option.option != null)
+      .map(option => option.option);
   }
 
   addOption(): void {
     this.optionsService.respondentOptions.next(this.getOptionsValue());
     this.options.push(this.addEmptyOption());
+    this.isOptionAdded = true;
   }
 
   removeOption(optionIndex: number) {
