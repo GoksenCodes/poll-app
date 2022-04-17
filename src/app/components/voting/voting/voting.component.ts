@@ -32,7 +32,6 @@ export class VotingComponent implements OnInit {
           value: option,
           count: 0
         };
-        console.log(optionObject);
         return this.votes.push(optionObject);
       });
     });
@@ -47,6 +46,8 @@ export class VotingComponent implements OnInit {
   }
 
   submit() {
+    console.log('onsubmit votes', this.votes);
+    this.votingService.votes.next(this.votes);
     const votedOption = this.optionForm.value.option;
     this.updateVotes(votedOption);
 

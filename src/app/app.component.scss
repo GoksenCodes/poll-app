@@ -1,3 +1,14 @@
 .components-container {
   display: flex;
 }
+
+app-create-poll,
+app-voting {
+  border-right: 2px solid gray;
+}
+
+app-create-poll,
+app-voting,
+app-results {
+  width: 30%;
+}

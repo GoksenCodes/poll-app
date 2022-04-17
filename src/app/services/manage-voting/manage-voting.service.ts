@@ -22,6 +22,6 @@ export class ManageVotingService {
       }
       return vote;
     });
-    this.votes.next(currentVotes);
+    this.votes.next(this.updatedVotes);
   }
 }

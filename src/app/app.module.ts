@@ -14,13 +14,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VotingComponent } from './components/voting/voting/voting.component';
 import { MainHeaderComponent } from './components/main-header/main-header/main-header.component';
+import { ResultsComponent } from './components/results/results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreatePollComponent,
     VotingComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
