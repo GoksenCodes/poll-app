@@ -17,3 +17,14 @@ form {
 mat-form-field {
   width: 80%;
 }
+
+.controls-container {
+  position: relative;
+  margin-top: 100%;
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

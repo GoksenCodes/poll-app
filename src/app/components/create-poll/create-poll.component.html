@@ -43,5 +43,10 @@
       </div>
     </form>
   </div>
-  <div>{{getOptionsValue().length}}/10 possible answers</div>
+  <div class="controls-container">
+    <div class="controls">
+      <div>{{getOptionsValue().length}}/10 possible answers</div>
+      <button *ngIf="getOptionsValue().length > 1" mat-raised-button color="warn" (click)="resetForm()">Reset</button>
+    </div>
+  </div>
 </div>

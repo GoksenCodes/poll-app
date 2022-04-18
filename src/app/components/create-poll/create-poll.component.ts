@@ -55,4 +55,9 @@ export class CreatePollComponent implements OnInit {
     this.options.removeAt(optionIndex);
     this.dataService.updateOptionsData(this.getOptionsValue());
   }
+
+  resetForm() {
+    this.questionForm.reset();
+    this.dataService.updateOptionsData([])
+  }
 }
