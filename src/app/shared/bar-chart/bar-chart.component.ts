@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { IOptionObject } from 'src/app/models/option-object.model';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 
@@ -9,7 +9,9 @@ import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 })
 export class BarChartComponent implements OnInit {
 
-  barChartOptions: ChartOptions;
+  barChartOptions: ChartOptions = {
+    responsive: true
+  }
   barChartLabels: string[];
   barChartType: ChartType = 'bar'
   barChartLegend = true;
@@ -19,12 +21,18 @@ export class BarChartComponent implements OnInit {
   @Input() results: IOptionObject[] = [];
 
   constructor(
-  ) {
-    this.barChartOptions = { responsive: true }
-  }
+  ) { }
 
   ngOnInit(): void {
-    console.log("results", this.results)
-    this.barChartData = this.results.map(r => ({ data: [r.count], label: r.value }))
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes.results)
+
+    const newResults = [{ value: "a", count: 15 }, { value: "b", count: 20 }]
+    this.barChartLabels = changes.results.currentValue.map(r => r.value)
+    const data = changes.results.currentValue.map(r => r.count)
+    this.barChartData = [{ data: data, label: 'Voting Results' }]
   }
 }

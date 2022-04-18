@@ -43,11 +43,12 @@ export class VotingComponent implements OnInit {
   }
 
   updateVotes(votedOption: string) {
-    this.voteCounts.map(v => {
-      if (v.value === votedOption) {
-        v.count++
+    const updatedVotes = this.voteCounts.map(vote => {
+      if (vote.value === votedOption) {
+        vote.count++
       }
+      return vote
     })
-    this.dataService.updateVotingData(this.voteCounts)
+    this.dataService.updateVotingData(updatedVotes)
   }
 }
