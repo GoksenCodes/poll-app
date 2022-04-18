@@ -1,27 +1,36 @@
-# PollApp
+## POLL APP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
+A poll application focusing on managing internal state of the app in front end without any backend interactions. 
 
-## Development server
+### User Stories
+- User can change poll question.
+- User can add, edit or remove the options.
+- User can reset the whole form adn poll results.
+- User can submit multiple votes
+- User can see the changes in UI realtime.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Proposed Solution
 
-## Code scaffolding
+A data service is created to store app state in a centralized single source. The components can consume the data through data service.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### [Click here to see the Live Demo](https://625d4062e52ef63106ae4fad--cosmic-pie-68b768.netlify.app/)
 
-## Build
+## Libraries / Tools Used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Angular
+- Chart.js
 
-## Running unit tests
+## Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To install dependencies run:
 
-## Running end-to-end tests
+`npm install`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To run the app run:
 
-## Further help
+`ng serve`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To execute the unit tests via [Karma](https://karma-runner.github.io) run:
+
+`ng test`
+
