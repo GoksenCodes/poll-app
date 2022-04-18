@@ -8,13 +8,11 @@ import { Observable } from 'rxjs';
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent {
   results$: Observable<IOptionObject[]>
 
+  // subscribe votes so that results get update in realtime
   constructor(private dataService: DataService) {
     this.results$ = this.dataService.votes
-  }
-
-  ngOnInit(): void {
   }
 }

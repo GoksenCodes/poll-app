@@ -7,7 +7,7 @@ import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent implements OnInit {
+export class BarChartComponent {
 
   barChartOptions: ChartOptions = {
     responsive: true
@@ -23,14 +23,8 @@ export class BarChartComponent implements OnInit {
   constructor(
   ) { }
 
-  ngOnInit(): void {
-
-  }
-
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.results)
-
-    const newResults = [{ value: "a", count: 15 }, { value: "b", count: 20 }]
+    //update bar-chart values when input changes
     this.barChartLabels = changes.results.currentValue.map(r => r.value)
     const data = changes.results.currentValue.map(r => r.count)
     this.barChartData = [{ data: data, label: 'Voting Results' }]

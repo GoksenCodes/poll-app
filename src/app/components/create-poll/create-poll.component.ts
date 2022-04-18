@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -13,15 +13,13 @@ import { DataService } from 'src/app/services/data-service/data.service';
   templateUrl: './create-poll.component.html',
   styleUrls: ['./create-poll.component.scss']
 })
-export class CreatePollComponent implements OnInit {
+export class CreatePollComponent {
   questionForm: FormGroup;
   listOfOptions: string[];
 
   constructor(private fb: FormBuilder, private dataService: DataService) {
     this.questionForm = this.createForm();
   }
-
-  ngOnInit(): void { }
 
   createForm(): FormGroup {
     return this.fb.group({
@@ -42,13 +40,15 @@ export class CreatePollComponent implements OnInit {
 
   getOptionsValue(): string[] {
     return this.questionForm.value.options
+
+      //in order to get only inputs with value filter out the null ones
       .filter(option => option.option != null)
       .map(option => option.option);
   }
 
   addOption(): void {
-    this.dataService.updateOptionsData(this.getOptionsValue());
     this.options.push(this.addEmptyOption());
+    this.dataService.updateOptionsData(this.getOptionsValue());
   }
 
   removeOption(optionIndex: number) {

@@ -5,6 +5,9 @@ import { IOptionObject } from 'src/app/models/option-object.model';
 @Injectable({
   providedIn: 'root'
 })
+
+//BheaviourSubject holds the data that can be shared with other components
+//Components can consume votes and/or options data thorugh data service
 export class DataService {
   private votesSource: BehaviorSubject<IOptionObject[]> = new BehaviorSubject<
     IOptionObject[]
@@ -25,6 +28,4 @@ export class DataService {
   updateOptionsData(options: string[]) {
     this.optionsSource.next(options)
   }
-
-  
 }
