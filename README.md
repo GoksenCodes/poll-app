@@ -13,7 +13,7 @@ A poll application focusing on managing internal state of the app in front end w
 
 A data service is created to store app state in a centralized single source. The components can consume the data through data service.
 
-### [Click here to see the Live Demo]([https://625d4062e52ef63106ae4fad--cosmic-pie-68b768.netlify.app/])
+### [Click here to see the Live Demo](https://625d4062e52ef63106ae4fad--cosmic-pie-68b768.netlify.app/)
 
 ## Libraries / Tools Used
 
