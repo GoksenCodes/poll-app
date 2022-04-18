@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { VotingComponent } from './components/voting/voting.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { ResultsComponent } from './components/results/results.component';
@@ -30,6 +30,8 @@ import { BarChartComponent } from './shared/bar-chart/bar-chart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

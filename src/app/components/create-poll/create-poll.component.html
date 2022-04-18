@@ -5,7 +5,7 @@
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Question
           </mat-label>
-          <input matInput formControlName="question" required>
+          <input matInput id="question" formControlName="question" required>
           <mat-error *ngIf="questionForm.controls.question.touched && questionForm.controls.question.invalid">
             <span *ngIf="questionForm.controls.question.errors.required">This field is mandatory.</span>
             <span *ngIf="questionForm.controls.question.errors.maxlength">Question can be max 80 characters.</span>
@@ -21,7 +21,7 @@
                   <mat-label>
                     Option
                   </mat-label>
-                  <input matInput formControlName="option" required>
+                  <input id="option" matInput formControlName="option" required>
                   <mat-error *ngIf="options.controls[i].touched && options.controls[i].invalid">
                     <span *ngIf="options.controls[i].errors?.maxlength">Answer can be max 80 characters</span>
                   </mat-error>
