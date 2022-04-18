@@ -1,28 +1,17 @@
-form {
-  max-width: 600px;
-
-  .first-level-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .options-container {
-    .option {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-}
-
 mat-form-field {
   width: 80%;
 }
 
-.controls-container {
-  position: relative;
-  margin-top: 100%;
+.main-container {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
+.controls-container {
   .controls {
+    height: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
