@@ -59,5 +59,6 @@ export class CreatePollComponent {
   resetForm() {
     this.questionForm.reset();
     this.dataService.updateOptionsData([])
+    this.dataService.updateVotingData([])
   }
 }

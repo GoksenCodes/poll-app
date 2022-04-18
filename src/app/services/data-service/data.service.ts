@@ -6,7 +6,6 @@ import { IOptionObject } from 'src/app/models/option-object.model';
   providedIn: 'root'
 })
 
-//BheaviourSubject holds the data that can be shared with other components
 //Components can consume votes and/or options data thorugh data service
 export class DataService {
   private votesSource: BehaviorSubject<IOptionObject[]> = new BehaviorSubject<
