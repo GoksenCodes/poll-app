@@ -15,5 +15,6 @@ export class ResultsComponent implements OnInit {
     this.results$ = this.dataService.votes
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 }

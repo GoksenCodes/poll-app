@@ -3,3 +3,6 @@
     {{result.value}}: {{result.count}}
   </li>
 </ul>
+<div *ngIf="results$ | async as results">
+  <app-bar-chart [results]="results"></app-bar-chart>
+</div>

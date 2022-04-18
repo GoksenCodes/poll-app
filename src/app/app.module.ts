@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VotingComponent } from './components/voting/voting.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { ResultsComponent } from './components/results/results.component';
+import { NgChartsModule } from 'ng2-charts';
+import { BarChartComponent } from './shared/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ResultsComponent } from './components/results/results.component';
     CreatePollComponent,
     VotingComponent,
     MainHeaderComponent,
-    ResultsComponent
+    ResultsComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { ResultsComponent } from './components/results/results.component';
     MatButtonModule,
     MatIconModule,
     MatRadioModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
