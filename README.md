@@ -34,3 +34,8 @@ To execute the unit tests via [Karma](https://karma-runner.github.io) run:
 
 `ng test`
 
+## Future Work
+
+1. Complete test coverage to achieve 80%
+2. Improve UX by displaying tooltips on buttons and validation errors
+
