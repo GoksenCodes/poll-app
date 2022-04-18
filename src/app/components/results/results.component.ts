@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ManageVotingService } from 'src/app/services/manage-voting/manage-voting.service';
 import { IOptionObject } from 'src/app/models/option-object.model';
+import { DataService } from 'src/app/services/data-service/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-results',
@@ -8,11 +9,11 @@ import { IOptionObject } from 'src/app/models/option-object.model';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  results: IOptionObject[] = [];
+  results$: Observable<IOptionObject[]>
 
-  constructor(private votingService: ManageVotingService) {
-    this.votingService.votes.subscribe(votes => (this.results = votes));
+  constructor(private dataService: DataService) {
+    this.results$ = this.dataService.votes
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

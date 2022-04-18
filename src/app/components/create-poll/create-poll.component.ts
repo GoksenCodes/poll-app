@@ -6,8 +6,7 @@ import {
   FormArray,
   Form
 } from '@angular/forms';
-import { OptionsService } from 'src/app/services/manage-options/options.service';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from 'src/app/services/data-service/data.service';
 
 @Component({
   selector: 'app-create-poll',

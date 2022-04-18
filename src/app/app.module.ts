@@ -12,8 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { VotingComponent } from './components/voting/voting/voting.component';
-import { MainHeaderComponent } from './components/main-header/main-header/main-header.component';
+import { VotingComponent } from './components/voting/voting.component';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { ResultsComponent } from './components/results/results.component';
 
 @NgModule({
@@ -39,4 +39,4 @@ import { ResultsComponent } from './components/results/results.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

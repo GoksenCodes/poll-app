@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let result of results">
+  <li *ngFor="let result of results$ | async">
     {{result.value}}: {{result.count}}
   </li>
 </ul>
