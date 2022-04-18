@@ -8,7 +8,7 @@
           <input matInput formControlName="question" required>
           <mat-error *ngIf="questionForm.controls.question.touched && questionForm.controls.question.invalid">
             <span *ngIf="questionForm.controls.question.errors.required">This field is mandatory.</span>
-            <span *ngIf="questionForm.controls.question.errors.pattern">This field is invalid.</span>
+            <span *ngIf="questionForm.controls.question.errors.maxlength">Question can be max 80 characters.</span>
           </mat-error>
         </mat-form-field>
       </div>

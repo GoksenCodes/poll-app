@@ -36,7 +36,7 @@ export class CreatePollComponent implements OnInit {
 
   addEmptyOption() {
     return this.fb.group({
-      option: [null]
+      option: [null, [Validators.maxLength(80)]]
     });
   }
 
