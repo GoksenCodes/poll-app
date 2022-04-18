@@ -1,4 +1,16 @@
+form {
+  margin: 20px;
+}
 mat-radio-group {
   display: flex;
   flex-direction: column;
+
+  mat-radio-button {
+    margin: 20px 0 20px;
+  }
+}
+
+button {
+  position: relative;
+  margin-top: 100%;
 }
