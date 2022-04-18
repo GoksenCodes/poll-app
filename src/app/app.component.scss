@@ -1,5 +1,6 @@
 .components-container {
   display: flex;
+  height: calc(100vh - 64px);
 }
 
 app-create-poll,
@@ -10,5 +11,6 @@ app-voting {
 app-create-poll,
 app-voting,
 app-results {
-  width: 30%;
+  padding: 30px;
+  width: 33%;
 }
