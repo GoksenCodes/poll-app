@@ -1,3 +1,5 @@
 <div *ngIf="results$ | async as results">
-  <app-bar-chart [results]="results"></app-bar-chart>
+  <ng-container *ngIf="results.length > 0">
+    <app-bar-chart [results]="results"></app-bar-chart>
+  </ng-container>
 </div>
